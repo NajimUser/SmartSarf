@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-[#F8FAFC]">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <aside class="w-full md:w-64 bg-[#1E293B] text-white p-6">
+            <h2 class="text-2xl font-bold mb-10 text-[#9FE1C8]">SmartSarf</h2>
+            <nav class="space-y-4">
+                <a href="#" class="block p-3 bg-[#10B981] rounded-xl">Tableau de bord</a>
+                <a href="comparateur.html" class="block p-3 hover:bg-gray-700 rounded-xl">Comparer les prix</a>
+                <a href="#" class="block p-3 hover:bg-gray-700 rounded-xl">Mes Dépenses</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold">Mon Espace Budget</h1>
+                <button class="bg-[#FF4D4D] text-white px-4 py-2 rounded-lg text-sm">Alerte : Seuil atteint</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                    <p class="text-gray-400 text-sm">Budget Restant</p>
+                    <p class="text-3xl font-black text-[#10B981]">2,450 DH</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                    <p class="text-gray-400 text-sm">Dépenses du mois</p>
+                    <p class="text-3xl font-black text-[#1E293B]">1,550 DH</p>
+                </div>
+                <div class="bg-[#9FE1C8]/20 p-6 rounded-3xl border border-[#9FE1C8]">
+                    <p class="text-gray-600 text-sm font-bold">Conseil IA ✨</p>
+                    <p class="text-xs text-gray-500">Achetez votre farine chez 'Bim Socco' pour économiser 12 DH.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold mb-6">Répartition des dépenses</h3>
+                <canvas id="budgetChart" style="max-height: 300px;"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Alimentation', 'Transport', 'Logement', 'Loisirs'],
+                datasets: [{
+                    data: [45, 15, 30, 10],
+                    backgroundColor: ['#10B981', '#1E293B', '#9FE1C8', '#8B5CF6'],
+                    borderWidth: 0
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
